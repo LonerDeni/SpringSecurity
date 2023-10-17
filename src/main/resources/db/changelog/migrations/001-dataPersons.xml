@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+    http://www.liquibase.org/xml/ns/pro
+    http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd
+    ">
+<changeSet author="testdd" id="2">
+    <insert schemaName="netology" tableName="PERSONS">
+        <column name="name" value="ANDREY"/>
+        <column name="surname" value="AKOPANS"/>
+        <column name="age" value="29"/>
+        <column name="phone_number" value="1234"/>
+        <column name="city_of_living" value="Moscow"/>
+    </insert>
+    <insert schemaName="netology" tableName="PERSONS">
+        <column name="name" value="PETOR"/>
+        <column name="surname" value="NEWERS"/>
+        <column name="age" value="26"/>
+        <column name="phone_number" value="1238"/>
+        <column name="city_of_living" value="Moscow"/>
+    </insert>
+    <insert schemaName="netology" tableName="PERSONS">
+        <column name="name" value="ANNA"/>
+        <column name="surname" value="POPOVA"/>
+        <column name="age" value="37"/>
+        <column name="phone_number" value="1235"/>
+        <column name="city_of_living" value="Kazan"/>
+    </insert>
+    <insert schemaName="netology" tableName="PERSONS">
+        <column name="name" value="OLGA"/>
+        <column name="surname" value="IVANOVA"/>
+        <column name="age" value="44"/>
+        <column name="phone_number" value="1236"/>
+        <column name="city_of_living" value="Rostov"/>
+    </insert>
+    <insert schemaName="netology" tableName="PERSONS">
+        <column name="name" value="IGOR"/>
+        <column name="surname" value="VALENTINOV"/>
+        <column name="age" value="33"/>
+        <column name="phone_number" value="1237"/>
+        <column name="city_of_living" value="Sochi"/>
+    </insert>
+</changeSet>
+</databaseChangeLog>
