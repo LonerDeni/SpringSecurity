@@ -4,15 +4,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 @Configuration
-@EnableWebSecurity
+@EnableGlobalMethodSecurity(securedEnabled = true,prePostEnabled = true,jsr250Enabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
@@ -24,23 +24,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             auth.inMemoryAuthentication()
                     .withUser("Semen")
                     .password(encoder().encode("qwerty123"))
-                    .authorities("ALL")
+                    .roles("READ")
                     .and()
                     .withUser("Oleg")
                     .password(encoder().encode("qwerty124"))
-                    .authorities("READ");
-    }
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin()
-                .and()
-                .authorizeHttpRequests().antMatchers(HttpMethod.GET,"/persons/by-city").hasAuthority("ALL")
-                .and()
-                .authorizeHttpRequests().antMatchers(HttpMethod.GET,"/persons/by-age").hasAuthority("READ")
-                .and()
-                .authorizeHttpRequests().antMatchers(HttpMethod.GET,"/persons/auth").permitAll()
-                .and()
-                .authorizeHttpRequests().anyRequest().authenticated();
+                    .roles("WRITE")
+                    .and()
+                    .withUser("Andrey")
+                    .password(encoder().encode("qwerty125"))
+                    .roles("READ","WRITE");
     }
 }
